@@ -24,7 +24,7 @@ def documentation(diagram):
     mforms.Utilities.set_clipboard_text(text)
     mforms.App.get().set_status_text("Documentation generated into the clipboard. Paste it to your editor.")
 
-    print "Documentation is copied to the clipboard."
+    print("Documentation is copied to the clipboard.")
     return 0
 
 def writeTableDoc(table):
@@ -131,7 +131,7 @@ def writeIndexDoc(index):
     text = "| " + index.name
 
     # index columns
-    text += " | " + ", ".join(map(lambda x: "`" + x.referencedColumn.name + "`", index.columns))
+    text += " | " + ", ".join(["`" + x.referencedColumn.name + "`" for x in index.columns])
 
     # index type
     text += " | " + index.indexType
@@ -145,4 +145,4 @@ def writeIndexDoc(index):
     return text
 
 def nl2br(text):
-    return "<br />".join(map(lambda x: x.strip(), text.split("\n")))
+    return "<br />".join([x.strip() for x in text.split("\n")])
